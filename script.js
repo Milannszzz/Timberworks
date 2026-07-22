@@ -408,3 +408,119 @@ heroImage.style.transform=`translateY(${offset*0.15}px) scale(1.08)`;
 }
 
 });
+
+/*=========================================
+OPTIMIZED HERO PARALLAX
+=========================================*/
+
+let ticking = false;
+
+function updateParallax() {
+
+    const scrollY = window.pageYOffset;
+
+    if (heroImage) {
+
+        heroImage.style.transform =
+        `translate3d(0, ${scrollY * 0.12}px, 0) scale(1.08)`;
+
+    }
+
+    ticking = false;
+
+}
+
+window.addEventListener("scroll", () => {
+
+    if (!ticking) {
+
+        requestAnimationFrame(updateParallax);
+
+        ticking = true;
+
+    }
+
+});
+
+/*=========================================
+HERO CONTENT FADE
+=========================================*/
+
+const heroContent = document.querySelector(".hero-content");
+
+window.addEventListener("scroll", () => {
+
+    if(heroContent){
+
+        const opacity = 1 - (window.scrollY / 500);
+
+        heroContent.style.opacity = Math.max(opacity,0);
+
+        heroContent.style.transform =
+        `translateY(${window.scrollY * 0.15}px)`;
+
+    }
+
+});
+
+/*=========================================
+LAZY IMAGE FADE-IN
+=========================================*/
+
+const images = document.querySelectorAll("img");
+
+const imageObserver = new IntersectionObserver((entries)=>{
+
+entries.forEach(entry=>{
+
+if(entry.isIntersecting){
+
+entry.target.classList.add("loaded");
+
+imageObserver.unobserve(entry.target);
+
+}
+
+});
+
+});
+
+images.forEach(img=>{
+
+imageObserver.observe(img);
+
+});
+
+/*=========================================
+CURRENT YEAR
+=========================================*/
+
+const year = document.getElementById("year");
+
+if(year){
+
+year.textContent = new Date().getFullYear();
+
+}
+
+/*=========================================
+SCROLL RESTORATION
+=========================================*/
+
+history.scrollRestoration = "manual";
+
+window.onbeforeunload = () => {
+
+window.scrollTo(0,0);
+
+};
+
+/*=========================================
+CONSOLE SIGNATURE
+=========================================*/
+
+console.log("%cTIMBERWORKS WEBSITE",
+"font-size:20px;font-weight:bold;color:#B88A28;");
+
+console.log("%cDesigned & Developed by Habeeb.dev",
+"color:#666;font-size:13px;");
