@@ -2597,3 +2597,128 @@ ACTIVE NAV LINK
 color:var(--secondary);
 
 }
+
+/*=========================================
+BUTTON RIPPLE
+=========================================*/
+
+.btn-primary,
+.btn-secondary{
+
+position:relative;
+
+overflow:hidden;
+
+}
+
+.ripple{
+
+position:absolute;
+
+border-radius:50%;
+
+transform:scale(0);
+
+background:rgba(255,255,255,.45);
+
+animation:ripple .6s linear;
+
+pointer-events:none;
+
+}
+
+@keyframes ripple{
+
+to{
+
+transform:scale(4);
+
+opacity:0;
+
+}
+
+}
+
+/*=========================================
+WHATSAPP PULSE
+=========================================*/
+
+.pulse{
+
+animation:whatsappPulse 1s ease;
+
+}
+
+@keyframes whatsappPulse{
+
+0%{
+
+transform:scale(1);
+
+}
+
+50%{
+
+transform:scale(1.15);
+
+box-shadow:0 0 0 15px rgba(37,211,102,.15);
+
+}
+
+100%{
+
+transform:scale(1);
+
+box-shadow:none;
+
+}
+
+}
+
+/*=========================================
+HEADER
+=========================================*/
+
+#header{
+
+transition:
+transform .35s ease,
+background .35s ease;
+
+}
+
+/*=========================================
+IMAGE FADE-IN
+=========================================*/
+
+img{
+
+opacity:0;
+
+transition:
+opacity .7s ease,
+transform .6s ease;
+
+}
+
+img.loaded{
+
+opacity:1;
+
+}
+
+/*=========================================
+GPU ACCELERATION
+=========================================*/
+
+.hero-image img,
+.project-card img,
+.intro-image img{
+
+will-change:transform;
+
+backface-visibility:hidden;
+
+transform:translateZ(0);
+
+}
