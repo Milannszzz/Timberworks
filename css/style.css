@@ -2565,3 +2565,35 @@ display:none;
 }
 
 }
+
+/*=========================================
+SCROLL REVEAL
+=========================================*/
+
+.hidden{
+
+opacity:0;
+
+transform:translateY(50px);
+
+transition:all .8s ease;
+
+}
+
+.show{
+
+opacity:1;
+
+transform:translateY(0);
+
+}
+
+/*=========================================
+ACTIVE NAV LINK
+=========================================*/
+
+.nav-menu a.active{
+
+color:var(--secondary);
+
+}
