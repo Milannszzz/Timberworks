@@ -290,3 +290,121 @@ link.classList.add("active");
 });
 
 });
+
+/*=========================================
+BUTTON RIPPLE EFFECT
+=========================================*/
+
+document.querySelectorAll(".btn-primary,.btn-secondary").forEach(button=>{
+
+button.addEventListener("click",function(e){
+
+const ripple=document.createElement("span");
+
+const rect=this.getBoundingClientRect();
+
+const size=Math.max(rect.width,rect.height);
+
+ripple.style.width=size+"px";
+ripple.style.height=size+"px";
+
+ripple.style.left=e.clientX-rect.left-size/2+"px";
+ripple.style.top=e.clientY-rect.top-size/2+"px";
+
+ripple.classList.add("ripple");
+
+this.appendChild(ripple);
+
+setTimeout(()=>{
+
+ripple.remove();
+
+},600);
+
+});
+
+});
+
+/*=========================================
+WHATSAPP PULSE
+=========================================*/
+
+const whatsapp=document.querySelector(".whatsapp-float");
+
+setInterval(()=>{
+
+whatsapp.classList.add("pulse");
+
+setTimeout(()=>{
+
+whatsapp.classList.remove("pulse");
+
+},1000);
+
+},4000);
+
+/*=========================================
+AUTO CLOSE MENU ON RESIZE
+=========================================*/
+
+window.addEventListener("resize",()=>{
+
+if(window.innerWidth>900){
+
+navMenu.classList.remove("active");
+
+menuIcon.classList.remove("ri-close-line");
+
+menuIcon.classList.add("ri-menu-3-line");
+
+document.body.style.overflow="auto";
+
+}
+
+});
+
+/*=========================================
+HIDE HEADER WHEN SCROLLING DOWN
+=========================================*/
+
+let lastScroll=0;
+
+window.addEventListener("scroll",()=>{
+
+const current=window.pageYOffset;
+
+if(current>150){
+
+if(current>lastScroll){
+
+header.style.transform="translateY(-100%)";
+
+}else{
+
+header.style.transform="translateY(0)";
+
+}
+
+}
+
+lastScroll=current;
+
+});
+
+/*=========================================
+PARALLAX HERO
+=========================================*/
+
+const heroImage=document.querySelector(".hero-image img");
+
+window.addEventListener("scroll",()=>{
+
+const offset=window.pageYOffset;
+
+if(heroImage){
+
+heroImage.style.transform=`translateY(${offset*0.15}px) scale(1.08)`;
+
+}
+
+});
