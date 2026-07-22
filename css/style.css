@@ -421,9 +421,11 @@ cursor:pointer;
 }
 
 .desktop-btn{
+    display:inline-flex;
+}
 
-display:flex;
-
+.mobile-btn{
+    display:none;
 }
 
 /*=========================================
